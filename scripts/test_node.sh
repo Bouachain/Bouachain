@@ -2,14 +2,14 @@
 # Run this script to quickly install, setup, and run the current version of the network without docker.
 #
 # Examples:
-# CHAIN_ID="localchain-1" HOME_DIR="~/.bouachain" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
+# CHAIN_ID="bouachain" HOME_DIR="~/.bouachain" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
 # CHAIN_ID="localchain-2" HOME_DIR="~/.bouachain" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 BLOCK_TIME="500ms" sh scripts/test_node.sh
 
 export KEY="acc0"
 export KEY2="acc1"
 
-export CHAIN_ID=${CHAIN_ID:-"localchain-1"}
-export MONIKER="localvalidator"
+export CHAIN_ID=${CHAIN_ID:-"bouachain"}
+export MONIKER="BouaValidator"
 export KEYALGO="secp256k1"
 export KEYRING=${KEYRING:-"test"}
 export HOME_DIR=$(eval echo "${HOME_DIR:-"~/.bouachain"}")
@@ -69,9 +69,9 @@ from_scratch () {
     echo $mnemonic | BINARY keys add $key --keyring-backend $KEYRING --algo $KEYALGO --recover
   }
 
-  # boua1efd63aw40lxf3n4mhf7dzhjkr453axurg2cdqy
+  # cosmos1efd63aw40lxf3n4mhf7dzhjkr453axur6cpk92
   add_key $KEY "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
-  # boua1hj5fveer5cjtn4wd6wstzugjfdxzl0xp57tffd
+  # cosmos1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxvjjvr
   add_key $KEY2 "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
 
   # chain initial setup
@@ -87,31 +87,44 @@ from_scratch () {
   update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
 
   # Gov
-  update_test_genesis `printf '.app_state["gov"]["params"]["min_deposit"]=[{"denom":"%s","amount":"1000000"}]' $DENOM`
+  update_test_genesis `printf '.app_state["gov"]["params"]["min_deposit"]=[{"denom":"%s","amount":"10000000"}]' $DENOM`
   update_test_genesis '.app_state["gov"]["params"]["voting_period"]="30s"'
   update_test_genesis '.app_state["gov"]["params"]["expedited_voting_period"]="15s"'
 
   # staking
   update_test_genesis `printf '.app_state["staking"]["params"]["bond_denom"]="%s"' $DENOM`
-  update_test_genesis '.app_state["staking"]["params"]["min_commission_rate"]="0.050000000000000000"'
+  update_test_genesis '.app_state["staking"]["params"]["min_commission_rate"]="0.10000000000000000"'
 
   # mint
   update_test_genesis `printf '.app_state["mint"]["params"]["mint_denom"]="%s"' $DENOM`
+  update_test_genesis '.app_state["mint"]["minter"]["inflation"]="0.100000000000000000"'
+  update_test_genesis '.app_state["mint"]["minter"]["annual_provisions"]="0.100000000000000000"'
+  update_test_genesis '.app_state["mint"]["params"]["inflation_rate_change"]="0.000000000000000000"'
+  update_test_genesis '.app_state["mint"]["params"]["inflation_max"]="0.100000000000000000"'
+  update_test_genesis '.app_state["mint"]["params"]["inflation_min"]="0.050000000000000000"'
+  update_test_genesis '.app_state["mint"]["params"]["goal_bonded"]="0.670000000000000000"'
+  update_test_genesis '.app_state["mint"]["params"]["blocks_per_year"]="6311520"'
 
   # crisis
   update_test_genesis `printf '.app_state["crisis"]["constant_fee"]={"denom":"%s","amount":"1000"}' $DENOM`
+  
+  # Distribution (Add Community Tax, Base Proposer Reward, and Bonus Proposer Reward)
+  update_test_genesis '.app_state["distribution"]["params"]["community_tax"]="0.020000000000000000"'
+  update_test_genesis '.app_state["distribution"]["params"]["base_proposer_reward"]="0.010000000000000000"'
+  update_test_genesis '.app_state["distribution"]["params"]["bonus_proposer_reward"]="0.040000000000000000"'
 
   # === CUSTOM MODULES ===
+  
   # tokenfactory
   update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_fee"]=[]'
-  update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_gas_consume"]=100000'
+  update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_gas_consume"]=2000000'
 
   # Allocate genesis accounts
-  BINARY genesis add-genesis-account $KEY 10000000$DENOM,900test --keyring-backend $KEYRING --append
-  BINARY genesis add-genesis-account $KEY2 10000000$DENOM,800test --keyring-backend $KEYRING --append
+  BINARY genesis add-genesis-account $KEY 90000000000000000$DENOM --keyring-backend $KEYRING --append
+  BINARY genesis add-genesis-account $KEY2 10000000000000000$DENOM --keyring-backend $KEYRING --append
 
   # Sign genesis transaction
-  BINARY genesis gentx $KEY 1000000$DENOM --keyring-backend $KEYRING --chain-id $CHAIN_ID
+  BINARY genesis gentx $KEY2 10000000000000000$DENOM --keyring-backend $KEYRING --chain-id $CHAIN_ID
 
   BINARY genesis collect-gentxs
 
@@ -132,7 +145,7 @@ fi
 echo "Starting node..."
 
 # Opens the RPC endpoint to outside connections
-sed -i -e 's/laddr = "tcp:\/\/127.0.0.1:26657"/c\laddr = "tcp:\/\/0.0.0.0:'$RPC'"/g' $HOME_DIR/config/config.toml
+sed -i -e 's/laddr = "tcp:\/\/127.0.0.1:26657"/laddr = "tcp:\/\/0.0.0.0:'$RPC'"/g' $HOME_DIR/config/config.toml
 sed -i -e 's/cors_allowed_origins = \[\]/cors_allowed_origins = \["\*"\]/g' $HOME_DIR/config/config.toml
 
 # REST endpoint
@@ -155,4 +168,4 @@ sed -i -e 's/address = ":8080"/address = "0.0.0.0:'$ROSETTA'"/g' $HOME_DIR/confi
 sed -i -e 's/timeout_commit = "5s"/timeout_commit = "'$BLOCK_TIME'"/g' $HOME_DIR/config/config.toml
 
 # Start the node with 0 gas fees
-BINARY start --pruning=nothing  --minimum-gas-prices=0$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC"
+BINARY start --pruning=nothing  --minimum-gas-prices=0.0006$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC"

@@ -289,9 +289,9 @@ ictest-ratelimit:
 setup-testnet: mod-tidy is-localic-installed install local-image set-testnet-configs setup-testnet-keys
 
 # Run this before testnet keys are added
-# localchain-1 is used in the testnet.json
+# bouachain is used in the testnet.json
 set-testnet-configs:
-	bouachain config set client chain-id localchain-1
+	bouachain config set client chain-id bouachain
 	bouachain config set client keyring-backend test
 	bouachain config set client output text
 
@@ -304,7 +304,7 @@ testnet: setup-testnet
 	spawn local-ic start testnet
 
 sh-testnet: mod-tidy
-	CHAIN_ID="localchain-1" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
+	CHAIN_ID="bouachain" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
 
 .PHONY: setup-testnet set-testnet-configs testnet testnet-basic sh-testnet
 

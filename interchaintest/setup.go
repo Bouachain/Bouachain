@@ -26,7 +26,7 @@ var (
 
 	Denom   = "bouacoin"
 	Name    = "bouachain"
-	ChainID = "localchain-1"
+	ChainID = "bouachain"
 	Binary  = "bouachain"
 	Bech32  = "boua"
 

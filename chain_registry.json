@@ -3,10 +3,10 @@
   "chain_name": "bouachain",
   "chain_type": "cosmos",
   "status": "live",
-  "website": "https://example.com",
-  "network_type": "testnet",
+  "website": "https://bouachain.com",
+  "network_type": "mainnet",
   "pretty_name": "Bouachain",
-  "chain_id": "localchain-1",
+  "chain_id": "BouaValidator",
   "bech32_prefix": "boua",
   "daemon_name": "bouachain",
   "node_home": "$HOME/.bouachain",
@@ -19,8 +19,8 @@
       {
         "denom": "bouacoin",
         "fixed_min_gas_price": 0,
-        "low_gas_price": 0,
-        "average_gas_price": 0.025,
+        "low_gas_price": 0.0006,
+        "average_gas_price": 0.012,
         "high_gas_price": 0.04
       }
     ]
@@ -36,7 +36,7 @@
     }
   },
   "codebase": {
-    "git_repo": "https://github.com/bouachain/bouachain",
+    "git_repo": "https://github.com/Bouachain/bouachain",
     "recommended_version": "v1.0.0",
     "compatible_versions": [
       "v0.9.0"
@@ -54,7 +54,7 @@
     ],
     "genesis": {
       "name": "v1",
-      "genesis_url": "https://github.com/bouachain/bouachain/networks/raw/main/genesis.json"
+      "genesis_url": "https://github.com/Bouachain/bouachain/networks/raw/main/genesis.json"
     },
     "versions": [
       {
@@ -68,7 +68,7 @@
   },
   "images": [
     {
-      "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
+      "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/bouachain.png",
       "theme": {
         "primary_color_hex": "#FF2D00"
       }
@@ -78,27 +78,27 @@
   "apis": {
     "rpc": [
       {
-        "address": "http://127.0.0.1:26657",
-        "provider": "localhost"
+        "address": "https://rpc.bouachain.com",
+        "provider": "BouaValidator"
       }
     ],
     "rest": [
       {
-        "address": "http://127.0.0.1:1317",
-        "provider": "localhost"
+        "address": "https://lcd.bouachain.com",
+        "provider": "BouaValidator"
       }
     ]
   },
   "explorers": [
     {
-      "kind": "cosmos",
-      "url": "https://example.com",
-      "tx_page": "https://example.com/tx",
-      "account_page": "https://example.com/account"
+      "kind": "bouachain",
+      "url": "https://bouascan.com",
+      "tx_page": "https://bouascan.com/bouachain/tx",
+      "account_page": "https://bouascan.com/bouachain"
     }
   ],
   "keywords": [
-    "cosmos",
+    "bouachain",
     "spawn"
   ]
 }

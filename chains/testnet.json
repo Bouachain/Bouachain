@@ -2,7 +2,7 @@
     "chains": [
         {
             "name": "bouachain",
-            "chain_id": "localchain-1",
+            "chain_id": "bouachain",
             "docker_image": {
                 "repository": "bouachain",
                 "version": "local",
@@ -73,7 +73,7 @@
                 }
             ],
             "ibc_paths": [
-                "localchain-1_localcosmos-1"
+                "bouachain_localcosmos-1"
             ],
             "number_vals": 1,
             "number_node": 0,
@@ -150,7 +150,7 @@
                 ]
             },
             "ibc_paths": [
-                "localchain-1_localcosmos-1"
+                "bouachain_localcosmos-1"
             ],
             "number_vals": 1,
             "number_node": 0,
