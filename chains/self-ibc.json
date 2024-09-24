@@ -1,0 +1,168 @@
+{
+    "chains": [
+        {
+            "name": "bouachain",
+            "chain_id": "localchain-1",
+            "docker_image": {
+                "repository": "bouachain",
+                "version": "local",
+                "uid-gid": ""
+            },
+            "gas_prices": "0.0bouacoin",
+            "gas_adjustment": 2,
+            "genesis": {
+                "modify": [
+                    {
+                        "key": "app_state.gov.params.voting_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.max_deposit_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.denom",
+                        "value": "bouacoin"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.amount",
+                        "value": "1"
+                    }
+                ],
+                "accounts": [
+                    {
+                        "name": "acc0",
+                        "amount": "25000000000%DENOM%",
+                        "address": "boua1hj5fveer5cjtn4wd6wstzugjfdxzl0xp57tffd",
+                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                    },
+                    {
+                        "name": "acc1",
+                        "amount": "24000000000%DENOM%",
+                        "address": "boua1efd63aw40lxf3n4mhf7dzhjkr453axurg2cdqy",
+                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                    },
+                    {
+                        "name": "user0",
+                        "amount": "100000%DENOM%",
+                        "address": "boua1jh92gs3f7dny58hp4xd8zkl2sh8cjttqam3wne",
+                        "mnemonic": "wash drum elder journey collect foil portion meat marriage true black share remain trumpet jungle lonely soda poet clump ozone gate just interest have"
+                    },
+                    {
+                        "name": "user1",
+                        "amount": "100000%DENOM%",
+                        "address": "boua18j5h6lpnlqhp8485w9fj6vxzn4c4s5909uthpc",
+                        "mnemonic": "dinosaur drastic velvet allow admit visual shield october gaze believe upset steel draw dad rally rack enable simple crime smooth pizza toe toe fitness"
+                    }
+                ]
+            },
+            "config_file_overrides": [
+                {
+                    "file": "config/app.toml",
+                    "paths": {
+                        "api.enabled-unsafe-cors": true
+                    }
+                },
+                {
+                    "file": "config/config.toml",
+                    "paths": {
+                        "rpc.cors_allowed_origins": [
+                            "*"
+                        ]
+                    }
+                }
+            ],
+            "ibc_paths": [
+                "localchain-1_localchain-2"
+            ],
+            "number_vals": 1,
+            "number_node": 0,
+            "chain_type": "cosmos",
+            "coin_type": 118,
+            "binary": "bouachain",
+            "bech32_prefix": "boua",
+            "denom": "bouacoin",
+            "trusting_period": "336h",
+            "debugging": false,
+            "block_time": "2000ms",
+            "host_port_override": {
+                "1317": "1317",
+                "26656": "26656",
+                "26657": "26657",
+                "9090": "9090"
+            },
+            "ics_version_override": {}
+        },
+        {
+            "name": "bouachain",
+            "chain_id": "localchain-2",
+            "docker_image": {
+                "repository": "bouachain",
+                "version": "local",
+                "uid-gid": ""
+            },
+            "gas_prices": "0.0bouacoin",
+            "gas_adjustment": 2,
+            "genesis": {
+                "modify": [
+                    {
+                        "key": "app_state.gov.params.voting_period",
+                        "value": "3s"
+                    },
+                    {
+                        "key": "app_state.gov.params.max_deposit_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.denom",
+                        "value": "bouacoin"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.amount",
+                        "value": "1"
+                    }
+                ],
+                "accounts": [
+                    {
+                        "name": "acc0",
+                        "amount": "25000000000%DENOM%",
+                        "address": "boua1hj5fveer5cjtn4wd6wstzugjfdxzl0xp57tffd",
+                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                    },
+                    {
+                        "name": "acc1",
+                        "amount": "24000000000%DENOM%",
+                        "address": "boua1efd63aw40lxf3n4mhf7dzhjkr453axurg2cdqy",
+                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                    },
+                    {
+                        "name": "user0",
+                        "amount": "100000%DENOM%",
+                        "address": "boua1v7ygppta65flzyk5y2fmk8sssqqlr9s8upgrrm",
+                        "mnemonic": "bone immense yard matrix never fame search dwarf grow broccoli angry dish pear image enjoy hero holiday traffic invite catch coral hundred supply morning"
+                    },
+                    {
+                        "name": "user1",
+                        "amount": "100000%DENOM%",
+                        "address": "boua1t9t0dgnx740dayrcjzj6k4zstegvd3k5cpkmjr",
+                        "mnemonic": "garage winner deputy second strategy call leave seat buyer identify client multiply modify bomb fold share warrior genuine brisk lab pause reflect between weekend"
+                    }
+                ]
+            },
+            "ibc_paths": [
+                "localchain-1_localchain-2"
+            ],
+            "number_vals": 1,
+            "number_node": 0,
+            "chain_type": "cosmos",
+            "coin_type": 118,
+            "binary": "bouachain",
+            "bech32_prefix": "boua",
+            "denom": "bouacoin",
+            "trusting_period": "336h",
+            "debugging": false,
+            "block_time": "2000ms",
+            "ics_version_override": {}
+        }
+    ]
+}
