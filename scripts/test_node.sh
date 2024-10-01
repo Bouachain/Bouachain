@@ -5,8 +5,8 @@
 # CHAIN_ID="bouachain" HOME_DIR="~/.bouachain" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
 # CHAIN_ID="localchain-2" HOME_DIR="~/.bouachain" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 BLOCK_TIME="500ms" sh scripts/test_node.sh
 
-export KEY="acc0"
-export KEY2="acc1"
+export KEY="bouaverse"
+export KEY2="bouablock"
 
 export CHAIN_ID=${CHAIN_ID:-"bouachain"}
 export MONIKER="BouaValidator"
@@ -69,10 +69,10 @@ from_scratch () {
     echo $mnemonic | BINARY keys add $key --keyring-backend $KEYRING --algo $KEYALGO --recover
   }
 
-  # cosmos1efd63aw40lxf3n4mhf7dzhjkr453axur6cpk92
-  add_key $KEY "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
-  # cosmos1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxvjjvr
-  add_key $KEY2 "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+  # boua1r7fm6cl5j4qu0l683e9hxpunczg3q4npjgr27l
+  add_key $KEY ""
+  # boua1x62lhv0m0qt38759299fg04qgueqt8uaay3wg9
+  add_key $KEY2 ""
 
   # chain initial setup
   BINARY init $MONIKER --chain-id $CHAIN_ID --default-denom $DENOM
@@ -124,7 +124,16 @@ from_scratch () {
   BINARY genesis add-genesis-account $KEY2 10000000000000000$DENOM --keyring-backend $KEYRING --append
 
   # Sign genesis transaction
-  BINARY genesis gentx $KEY2 10000000000000000$DENOM --keyring-backend $KEYRING --chain-id $CHAIN_ID
+  BINARY genesis gentx $KEY2 10000000000000000$DENOM --keyring-backend $KEYRING --chain-id $CHAIN_ID \
+--moniker "BouaValidator" \
+--identity "" \
+--website "https://bouachain.com" \
+--security-contact "dev@bouachain.com" \
+--details "Bouachain Validator" \
+--commission-rate "0.10" \
+--commission-max-rate "0.20" \
+--commission-max-change-rate "0.01" \
+--min-self-delegation "1"
 
   BINARY genesis collect-gentxs
 
