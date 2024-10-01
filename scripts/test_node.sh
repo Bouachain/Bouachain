@@ -70,9 +70,9 @@ from_scratch () {
   }
 
   # boua1r7fm6cl5j4qu0l683e9hxpunczg3q4npjgr27l
-  add_key $KEY ""
+  add_key $KEY "flash ozone elevator cash ability invest hip flower museum patch exercise swift olive endless another sleep chair machine leopard agree roast analyst border thunder"
   # boua1x62lhv0m0qt38759299fg04qgueqt8uaay3wg9
-  add_key $KEY2 ""
+  add_key $KEY2 "dinner fossil column choice mobile similar owner garment olive furnace lawn carry what solar girl often drip render choose glove inquiry turtle fruit broccoli"
 
   # chain initial setup
   BINARY init $MONIKER --chain-id $CHAIN_ID --default-denom $DENOM
