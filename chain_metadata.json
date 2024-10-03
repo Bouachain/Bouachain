@@ -1,11 +1,11 @@
 {
   "token": {
     "display_denom": "BOUACOIN",
-    "denom": "bouacoin",
+    "denom": "ubouacoin",
     "decimals": 8,
-    "inflation": "0.12",
-    "initial_supply": "1000000000",
-    "max_supply": "1000000000"
+    "inflation": "0.10",
+    "initial_supply": "100000000000000000",
+    "max_supply": "100000000000000000"
   },
   "project": {
     "github": "github.com/Bouachain/bouachain",

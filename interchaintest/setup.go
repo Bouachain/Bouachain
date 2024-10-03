@@ -24,7 +24,7 @@ var (
 	VotingPeriod     = "15s"
 	MaxDepositPeriod = "10s"
 
-	Denom   = "bouacoin"
+	Denom   = "ubouacoin"
 	Name    = "bouachain"
 	ChainID = "bouachain"
 	Binary  = "bouachain"

@@ -80,7 +80,21 @@ from_scratch () {
   update_test_genesis () {
     cat $HOME_DIR/config/genesis.json | jq "$1" > $HOME_DIR/config/tmp_genesis.json && mv $HOME_DIR/config/tmp_genesis.json $HOME_DIR/config/genesis.json
   }
-
+  
+  # Adding denom metadata
+  update_test_genesis '
+  .app_state["bank"]["denom_metadata"]=[{
+    "description": "The native token of Bouachain, used for transaction fees, staking, and governance.",
+    "denom_units": [
+      {"denom": "ubouacoin", "exponent": 0, "aliases": []},
+      {"denom": "bouacoin", "exponent": 8, "aliases": ["BOUA"]}
+    ],
+    "base": "ubouacoin",
+    "display": "bouacoin",
+    "name": "Bouacoin",
+    "symbol": "BOUA"
+  }]'
+  
   # === CORE MODULES ===
 
   # Block

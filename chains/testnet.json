@@ -8,7 +8,7 @@
                 "version": "local",
                 "uid-gid": ""
             },
-            "gas_prices": "0.0bouacoin",
+            "gas_prices": "0.0ubouacoin",
             "gas_adjustment": 2,
             "genesis": {
                 "modify": [
@@ -22,7 +22,7 @@
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.denom",
-                        "value": "bouacoin"
+                        "value": "ubouacoin"
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.amount",
@@ -45,14 +45,14 @@
                     {
                         "name": "user0",
                         "amount": "100000%DENOM%",
-                        "address": "boua1jh92gs3f7dny58hp4xd8zkl2sh8cjttqam3wne",
-                        "mnemonic": "wash drum elder journey collect foil portion meat marriage true black share remain trumpet jungle lonely soda poet clump ozone gate just interest have"
+                        "address": "boua1ut3mx7f4us2avxmku7kx7qv576dvkkctugwj7n",
+                        "mnemonic": "chaos enable staff left scatter first focus pizza cup wood miracle major joke orbit also innocent radio life will eye key delay zebra despair"
                     },
                     {
                         "name": "user1",
                         "amount": "100000%DENOM%",
-                        "address": "boua18j5h6lpnlqhp8485w9fj6vxzn4c4s5909uthpc",
-                        "mnemonic": "dinosaur drastic velvet allow admit visual shield october gaze believe upset steel draw dad rally rack enable simple crime smooth pizza toe toe fitness"
+                        "address": "boua1zvc7hszgq8dqq3k2ltldxs34jc4pk4mwxvgym5",
+                        "mnemonic": "same knock fiscal wash assist fiber produce science slender please enrich ski relax dress abstract inhale hammer tornado income vivid enrich cup goat cliff"
                     }
                 ]
             },
@@ -81,7 +81,7 @@
             "coin_type": 118,
             "binary": "bouachain",
             "bech32_prefix": "boua",
-            "denom": "bouacoin",
+            "denom": "ubouacoin",
             "trusting_period": "336h",
             "debugging": false,
             "block_time": "2000ms",
@@ -138,14 +138,14 @@
                     {
                         "name": "user0",
                         "amount": "100000%DENOM%",
-                        "address": "cosmos1vs9655zee45zvfjr7dd422qgvk860c96x6sedf",
-                        "mnemonic": "sort involve century oppose glass tissue globe diary beach cigar junk enable tuition action unveil clock harsh tent immune salute remain mutual ride rescue"
+                        "address": "cosmos1v36h33e674qrp3e3nl00k2j56a84ypj40tl4ql",
+                        "mnemonic": "very patch toilet hungry surround slot pear flower furnace junk aspect pioneer couple drop visa exact pigeon industry nature grid bless alarm attract night"
                     },
                     {
                         "name": "user1",
                         "amount": "100000%DENOM%",
-                        "address": "cosmos19z9g97qcsw5676s3zrfs3vtcmy23msd36lxd87",
-                        "mnemonic": "milk issue focus motor flip zebra rely spell bike bracket upgrade bundle chest remember essence hill page void lawn gap ladder suggest orchard nasty"
+                        "address": "cosmos1430kfkrh4q2c7xmwnwaelhv84g4kvcxmukky74",
+                        "mnemonic": "differ need accuse oppose goose destroy general social wolf copy link dignity animal suit opera obscure sphere youth giant shaft million again lawsuit snap"
                     }
                 ]
             },
